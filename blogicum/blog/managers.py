@@ -13,7 +13,7 @@ class PublishedPostQuerySet(models.QuerySet):
 
     def with_comment_count(self):
         return self.annotate(
-        comment_count=Count('comments')
+            comment_count=Count('comments')
         ).order_by('-pub_date',)
 
     def with_related(self):

@@ -65,7 +65,7 @@ class ProfileView(ListView):
             User,
             username=self.kwargs['username']
         )
-    
+
     def get_queryset(self):
         author = self.get_author()
         qs = (
