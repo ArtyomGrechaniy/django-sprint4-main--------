@@ -7,6 +7,7 @@ from .managers import PublishedPostQuerySet
 
 User = get_user_model()
 
+
 class CreatedAt(models.Model):
     created_at = models.DateTimeField(
         'Дата создания',
@@ -33,11 +34,11 @@ class Category(IsPublishedCreatedAt):
         'Заголовок',
         max_length=MAX_CHARFIELD_LENGTH,
     )
-    description = models.TextField('Описание', )
+    description = models.TextField('Описание',)
     slug = models.SlugField(
         'Идентификатор',
         unique=True,
-        help_text='Идентификатор страницы для URL; разрешены '
+        help_text='Идентификатор страницы для URL; разрешены'
         'символы латиницы, цифры, дефис и подчёркивание.'
     )
 

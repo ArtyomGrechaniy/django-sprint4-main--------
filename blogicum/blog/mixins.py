@@ -24,7 +24,7 @@ class PostMixin(AuthorRequiredMixin, LoginRequiredMixin):
             'blog:profile',
             kwargs={'username': self.request.user.username}
         )
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = self.get_object()

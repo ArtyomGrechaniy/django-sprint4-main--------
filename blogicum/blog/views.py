@@ -34,10 +34,10 @@ class CategoryPostView(BasePostListView):
 
     def get_category(self):
         return get_object_or_404(
-                Category,
-                slug=self.kwargs['category_slug'],
-                is_published=True
-            )
+            Category,
+            slug=self.kwargs['category_slug'],
+            is_published=True
+        )
 
     def get_queryset(self):
         return (
@@ -62,9 +62,10 @@ class ProfileView(ListView):
 
     def get_author(self):
         return get_object_or_404(
-                User,
-                username=self.kwargs['username']
-            )
+            User,
+            username=self.kwargs['username']
+        )
+    
     def get_queryset(self):
         author = self.get_author()
         qs = (
