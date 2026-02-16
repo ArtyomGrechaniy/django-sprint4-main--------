@@ -87,7 +87,7 @@ class PostAdmin(admin.ModelAdmin):
             )
         return '-'
 
-    image_preview.short_description = "Превью"
+    image_preview.short_description = 'Превью'
 
 
 @admin.register(Comment)

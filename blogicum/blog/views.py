@@ -4,12 +4,12 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from users.forms import ProfileUpdateForm
 
 from .constants import AMOUNT_OF_POSTS_PER_PAGE
 from .forms import CommentCreateForm, PostCreateForm
 from .mixins import AuthorRequiredMixin, CommentMixin, PostMixin
 from .models import Category, Post
+from users.forms import ProfileUpdateForm
 
 User = get_user_model()
 
@@ -40,12 +40,12 @@ class CategoryPostView(BasePostListView):
         )
 
     def get_queryset(self):
+        category = self.get_category()
         return (
-            Post.objects
+            category.posts
             .published()
             .with_related()
             .with_comment_count()
-            .filter(category=self.get_category())
         )
 
     def get_context_data(self, **kwargs):
@@ -149,7 +149,7 @@ class PostUpdateView(PostMixin, UpdateView):
     def get_success_url(self):
         return reverse(
             'blog:post_detail',
-            kwargs={'post_id': self.kwargs['post_id']}
+            post_id=self.pk_url_kwarg
         )
 
 
