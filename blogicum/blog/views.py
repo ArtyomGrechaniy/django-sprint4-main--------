@@ -149,7 +149,7 @@ class PostUpdateView(PostMixin, UpdateView):
     def get_success_url(self):
         return reverse(
             'blog:post_detail',
-            post_id=self.pk_url_kwarg
+            self.pk_url_kwarg
         )
 
 
