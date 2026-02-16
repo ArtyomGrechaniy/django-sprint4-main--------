@@ -147,9 +147,10 @@ class PostUpdateView(PostMixin, UpdateView):
     form_class = PostCreateForm
 
     def get_success_url(self):
+        post_id = self.kwargs[self.pk_url_kwarg]
         return reverse(
             'blog:post_detail',
-            self.pk_url_kwarg
+            kwargs={self.pk_url_kwarg: post_id}
         )
 
 
